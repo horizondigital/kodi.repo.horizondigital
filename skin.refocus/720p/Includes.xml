@@ -154,13 +154,13 @@
 			<left>20</left>
 			<top>16</top>
 			<include>toggle_Menu</include>
-			<visible>!Skin.HasSetting(global.kiosk) + [Window.IsActive(SettingsCategory.xml) | Window.IsActive(programs) | Window.IsActive(weather) | Window.IsActive(musicplaylist) | Window.IsActive(videoplaylist) | Window.IsActive(addonbrowser) | Window.IsActive(videolibrary) | Window.IsActive(musiclibrary) | Window.IsActive(musicfiles) | Window.IsActive(pictures) | Window.IsActive(pvr) | Window.IsActive(600)] + !Control.IsVisible(9900)</visible>
+			<visible>!Skin.HasSetting(global.kiosk) + [Window.IsActive(SettingsCategory.xml) | Window.IsActive(programs) | Window.IsActive(weather) | Window.IsActive(musicplaylist) | Window.IsActive(videoplaylist) | Window.IsActive(addonbrowser) | Window.IsActive(videolibrary) | Window.IsActive(musiclibrary) | Window.IsActive(musicfiles) | Window.IsActive(pictures) | Window.IsActive(tvchannels) | Window.IsActive(tvrecordings) | Window.IsActive(tvguide) | Window.IsActive(tvtimers) | Window.IsActive(tvsearch) | Window.IsActive(radiochannels) | Window.IsActive(radiorecordings) | Window.IsActive(radioguide) | Window.IsActive(radiotimers) | Window.IsActive(radiosearch) | Window.IsActive(600)] + !Control.IsVisible(9900)</visible>
 			<include>transition_Indicator</include>
 			<control type="image">
 				<width>32</width>
 				<height>32</height>
 				<texture>navigation/left.png</texture>
-				<visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(501) | Control.IsVisible(54) | Control.IsVisible(541) | Control.IsVisible(57) | Control.IsVisible(571) | Control.IsVisible(572) | Control.IsVisible(574) | Control.IsVisible(575) | Window.IsActive(weather) | Window.IsActive(pvr) | Window.IsActive(600) | Window.IsActive(SettingsCategory.xml)] + ![Window.IsActive(movieinformation) | Window.IsActive(musicinformation)]</visible>
+				<visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(501) | Control.IsVisible(54) | Control.IsVisible(541) | Control.IsVisible(57) | Control.IsVisible(571) | Control.IsVisible(572) | Control.IsVisible(574) | Control.IsVisible(575) | Window.IsActive(weather) | Window.IsActive(600) | Window.IsActive(SettingsCategory.xml)] + ![Window.IsActive(movieinformation) | Window.IsActive(musicinformation)]</visible>
 				<include>nav_IndicatorLeft</include>
 			</control>
 			<control type="image">
@@ -387,9 +387,10 @@
 			<left>1272</left>
 			<height>screen_Height</height>
 			<onleft condition="Window.IsActive(SettingsCategory.xml)">5</onleft>
-			<onleft condition="!Window.IsActive(videoplaylist)">50</onleft>
-			<onleft condition="Window.IsActive(videoplaylist)">99</onleft>
-			<visible>![Control.IsVisible(52) | Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(53) | Control.IsVisible(531) | Control.IsVisible(58)] + ![Window.IsActive(movieinformation) | Window.IsActive(musicinformation)]</visible>
+			<onleft condition="[Window.IsActive(videoplaylist) | Window.IsActive(tvchannels)] + Player.HasVideo">99</onleft>
+			<onleft condition="[Window.IsActive(videoplaylist) | Window.IsActive(tvchannels)] + !Player.HasVideo">50</onleft>
+			<onleft>50</onleft>
+			<visible>![Control.IsVisible(52) | Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(53) | Control.IsVisible(531) | Control.IsVisible(58)] + ![Window.IsActive(movieinformation) | Window.IsActive(musicinformation)] + ![Window.IsActive(tvguide) + Control.IsVisible(10)]</visible>
 		</control>
 		<!--horizontal-->
 		<control type="scrollbar" id="71">
@@ -842,9 +843,83 @@
 		</control>
 	</include>
 
+	<include name="progress_Light">
+		<texturebg border="0" colordiffuse="Color2">dialogs/progress/bg.png</texturebg>
+		<lefttexture border="0" colordiffuse="Color1">colorize/100.png</lefttexture>
+		<midtexture border="0" colordiffuse="Color1">colorize/100.png</midtexture>
+		<righttexture border="0" colordiffuse="Color1">colorize/100.png</righttexture>
+	</include>
+
+	<include name="container_Unfocus">
+		<visible>[ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus | Control.HasFocus(70) | Control.HasFocus(99)]</visible>
+	</include>
+	<include name="container_Focus">
+		<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus | Control.HasFocus(70) | Control.HasFocus(99)]</visible>
+	</include>
+
+	<include name="player_Preview">
+		<control type="group">
+			<left>680</left>
+			<top>90</top>
+			<include>toggle_Menu</include>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<control type="grouplist">
+				<itemgap>0</itemgap>
+				<control type="group">
+					<height>327</height>
+					<control type="image">
+						<width>546</width>
+						<height>307</height>
+						<include>art_Frame-nf</include>
+					</control>
+					<control type="image">
+						<width>546</width>
+						<height>307</height>
+						<include>art_Frame-fo</include>
+						<visible>Control.HasFocus(99)</visible>
+					</control>
+					<control type="group">
+						<left>7</left>
+						<top>7</top>
+						<control type="image">
+							<width>532</width>
+							<height>293</height>
+							<texture>black.png</texture>
+						</control>
+						<control type="videowindow">
+							<width>532</width>
+							<height>293</height>
+							<include>fadeinout</include>
+							<visible>!Window.IsActive(movieinformation)</visible>
+						</control>
+					</control>
+				</control>
+				<control type="label">
+					<width>532</width>
+					<label>$VAR[media:Title]</label>
+					<include>detail_Title</include>
+				</control>
+				<control type="label">
+					<width>532</width>
+					<label>$VAR[media:Info]</label>
+					<include>detail_Sub</include>
+				</control>
+				<control type="textbox">
+					<width>532</width>
+					<height>220</height>
+					<aligny>top</aligny>
+					<label>$INFO[ListItem.Plot]</label>
+					<include>detail_Text</include>
+				</control>
+			</control>
+		</control>
+	</include>
+
+
 <!--WINDOW TITLES-->
 	<include name="windowTitle">
-		<left>59</left>
+		<left>32</left>
 		<top>15</top>
 		<width>950</width>
 		<aligny>center</aligny>
@@ -852,7 +927,7 @@
 		<textcolor>Color1</textcolor>
 		<include>transition_WindowTitle</include>
 		<include>toggle_Menu</include>
-		<animation effect="slide" end="-27" time="0" condition="Skin.HasSetting(global.kiosk)">Conditional</animation>
+		<animation effect="slide" end="27" time="0" condition="[Window.IsActive(videolibrary) | Window.IsActive(musiclibrary) | Window.IsActive(videofiles) | Window.IsActive(musicfiles) | Window.IsActive(pictures) | Window.IsActive(weather) | Window.IsActive(programs) | Window.IsActive(addonbrowser) | Window.IsActive(videoplaylist) | Window.IsActive(musicplaylist) | Window.IsActive(musicplaylist) | Window.IsActive(picturessettings) | Window.IsActive(programssettings) | Window.IsActive(weathersettings) | Window.IsActive(musicsettings) | Window.IsActive(systemsettings) | Window.IsActive(videossettings) | Window.IsActive(servicesettings) | Window.IsActive(appearancesettings) | Window.IsActive(tvchannels) | Window.IsActive(tvrecordings) | Window.IsActive(tvguide) | Window.IsActive(tvtimers) | Window.IsActive(tvsearch) | Window.IsActive(radiochannels) | Window.IsActive(radiorecordings) | Window.IsActive(radioguide) | Window.IsActive(radiotimers) | Window.IsActive(radiosearch)] + !Skin.HasSetting(global.kiosk)">Conditional</animation>
 		<visible>![Window.IsActive(movieinformation) | Window.IsActive(musicinformation)]</visible>
 	</include>
 	<include name="windowTitle_Video">
@@ -883,7 +958,6 @@
 		<control type="label">
 			<label>$VAR[window:Title.System]</label>
 			<include>windowTitle</include>
-			<animation effect="slide" end="-27" time="0" condition="Window.IsActive(settings) | Window.IsActive(systeminfo) | Window.IsActive(profiles) | Window.IsActive(skinsettings) | Window.IsActive(filemanager)">Conditional</animation>
 		</control>
 	</include>
 	<include name="windowTitle_Addons">

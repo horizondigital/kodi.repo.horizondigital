@@ -158,12 +158,14 @@
 		<value condition="Window.IsActive(videoplaylist) + IsEmpty(ListItem.TVShowTitle)">$INFO[ListItem.Label]</value>
 		<value condition="Container.Content(episodes) + [SubString(Container.FolderName,$LOCALIZE[20387]) | SubString(Container.FolderPath,special://skin/playlists/) | SubString(Container.FolderPath,special://profile/playlists/) | SubString(Container.FolderPath,plugin://script.watchlist/)] + !IsEmpty(ListItem.Title)">$INFO[ListItem.TVShowTitle]$INFO[ListItem.Title,: ]</value>
 		<value condition="Container.Content(episodes) + !IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
+		<value condition="Window.IsActive(tvrecordings) | Window.IsActive(radiorecordings)">[B]$INFO[ListItem.ChannelNumber,,  ][/B]$INFO[ListItem.Label]</value>
 		<value condition="Container.Content(musicvideos) + !IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value condition="[SubString(Container.FolderPath,musicdb://singles/) | SubString(Container.FolderPath,musicdb://top100/songs/)] + !IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
 		<value condition="Container.Content(songs) + !IsEmpty(ListItem.Title)">$INFO[ListItem.Tracknumber,,. ]$INFO[ListItem.Title]</value>
+		<value condition="Window.IsActive(tvchannels)">$INFO[ListItem.ChannelNumber,, - ]$INFO[ListItem.ChannelName]</value>
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
-
+	
 	<variable name="media:Info">
 		<value condition="Container.Content(movies) + Skin.HasSetting(ratings.enable)">$VAR[flag:Type.Video,, • ]$INFO[ListItem.Year]$INFO[ListItem.Duration, • , $LOCALIZE[31701]]$INFO[ListItem.Rating, • ]$INFO[ListItem.Genre, • ]</value>
 		<value condition="Container.Content(movies)">$VAR[flag:Type.Video,, • ]$INFO[ListItem.Year]$INFO[ListItem.Duration, • , $LOCALIZE[31701]]$INFO[ListItem.Genre, • ]</value>
@@ -195,9 +197,11 @@
 		<value condition="Window.IsActive(videoplaylist) + IsEmpty(ListItem.TVShowTitle) + IsEmpty(ListItem.Artist)">$VAR[flag:Type.Video,, • ]$INFO[ListItem.Genre]</value>
 		<value condition="Window.IsActive(videoplaylist) + !IsEmpty(ListItem.Artist)">$INFO[ListItem.Artist]</value>
 		<value condition="Window.IsActive(videoplaylist) + IsEmpty(ListItem.TVShowTitle) + IsEmpty(ListItem.Artist) + IsEmpty(Listitem.Genre)">$INFO[ListItem.Path]</value>
+		<value condition="Window.IsActive(tvrecordings) | Window.IsActive(radiorecordings)">$INFO[ListItem.StartDate,, - ]$INFO[ListItem.StartTime]$INFO[ListItem.ChannelName, • ]</value>
+		<value condition="Window.IsActive(tvchannels)">$INFO[ListItem.StartTime,, - ]$INFO[ListItem.EndTime,, • ]$LOCALIZE[209]$INFO[ListItem.NextTitle,: ]</value>
 		<value condition="!SubString(ListItem.Icon,Default) + Container.HasFiles">$LOCALIZE[31151]</value>
 	</variable>
-
+	
 	<variable name="media:Info.Addon">
 		<value condition="[Container.Content(movies) | Container.Content(tvshows)] + !IsEmpty(ListItem.Duration)">$INFO[ListItem.Duration,, $LOCALIZE[31701]]$INFO[ListItem.Genre, • ]</value>
 		<value condition="[Container.Content(movies) | Container.Content(tvshows)] + !IsEmpty(ListItem.Genre)">$INFO[ListItem.Genre]</value>
@@ -270,7 +274,7 @@
 		<value condition="!IsEmpty(ListItem.Art(tvshow.poster)) + !Container.Content(seasons)">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="!IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
 		<value condition="IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(thumb)]</value>
-		<value>$INFO[ListItem.Art(thumb)]</value>
+		<value>$INFO[Container.SeasonThumb]</value>
 	</variable>
 
 	<variable name="art:Banner">
@@ -497,17 +501,6 @@
 		<value>pvr/status/none-nf.png</value>
 	</variable>
 
-	<variable name="pvr:TVChannelGroup">
-		<value condition="Control.HasFocus(32)">$LOCALIZE[19180]$INFO[Container.FolderName,: ]</value>
-		<value>$LOCALIZE[19180]</value>
-	</variable>
-
-	<variable name="pvr:RadioChannelGroup">
-		<value condition="Control.HasFocus(33)">$LOCALIZE[19021]$INFO[Container.FolderName,: ]</value>
-		<value>$LOCALIZE[19021]</value>
-	</variable>
-
-
 <!--TOAST-->
 	<variable name="toast:Top">
 		<value condition="SubString(System.Time,AM,right)">[B]$INFO[System.Time(h),,:]$INFO[System.Time(mm)][/B]AM</value>
@@ -516,15 +509,15 @@
 	</variable>
 
 	<variable name="toast:Bottom">
-		<value condition="[Window.IsActive(PVR) | Window.IsActive(Home)] + Skin.HasSetting(overlay.pvr) + PVR.HasNonRecordingTimer">$INFO[Pvr.NextRecordingChannel,,:]$INFO[Pvr.NextRecordingTitle]</value>
-		<value condition="[Window.IsActive(PVR) | Window.IsActive(Home)] + Skin.HasSetting(overlay.pvr) + PVR.IsRecording">2222$INFO[Pvr.NowRecordingChannel,,:]$INFO[Pvr.NowRecordingTitle]</value>
+		<value condition="[Window.IsActive(Home)] + Skin.HasSetting(overlay.pvr) + PVR.HasNonRecordingTimer">$LOCALIZE[19157]$INFO[Pvr.NextRecordingTitle,: ]</value>
+		<value condition="[Window.IsActive(Home)] + Skin.HasSetting(overlay.pvr) + PVR.IsRecording">$LOCALIZE[19043]$INFO[Pvr.NowRecordingTitle,: ]</value>
 		<value condition="!Window.IsActive(fullscreenvideo)">$INFO[System.Date(DDD)] $INFO[System.Date(d)] $INFO[System.Date(MMM)]</value>
 		<value condition="Window.IsActive(fullscreenvideo)">$LOCALIZE[31323] $INFO[Player.FinishTime]</value>
 	</variable>
 
 	<variable name="toast:Icon">
-		<value condition="IntegerGreaterThan(Player.Volume,0) + [Window.IsActive(PVR) | Window.IsActive(Home)] + Skin.HasSetting(overlay.pvr) + PVR.HasNonRecordingTimer">toast/alarm.png</value>
-		<value condition="IntegerGreaterThan(Player.Volume,0) + [Window.IsActive(PVR) | Window.IsActive(Home)] + Skin.HasSetting(overlay.pvr) + PVR.IsRecording">$INFO[PVR.NowRecordingChannelIcon]</value>
+		<value condition="IntegerGreaterThan(Player.Volume,0) + Window.IsActive(Home) + Skin.HasSetting(overlay.pvr) + PVR.HasNonRecordingTimer">$INFO[Pvr.NextRecordingChannelIcon]</value>
+		<value condition="IntegerGreaterThan(Player.Volume,0) + Window.IsActive(Home) + Skin.HasSetting(overlay.pvr) + PVR.IsRecording">$INFO[Pvr.NowRecordingChannelIcon]</value>
 		<value condition="IntegerGreaterThan(Player.Volume,0) + Weather.IsFetched">$INFO[Window(weather).Property(Current.FanartCode),weather/small/,.png]</value>
 		<value>weather/small/na.png</value>
 	</variable>
@@ -545,7 +538,7 @@
 <!--WINDOW-->
 	<variable name="window:Background">
 		<value condition="[Window.IsActive(VideoLibrary) | Window.IsActive(Videos)]">special://skin/backgrounds/defaults/video.jpg</value>
-		<value condition="[Window.IsActive(pvr)]">special://skin/backgrounds/defaults/livetv.jpg</value>
+		<value condition="[Window.IsActive(tvchannels) | Window.IsActive(tvrecordings) | Window.IsActive(tvguide) | Window.IsActive(tvtimers) | Window.IsActive(tvsearch) | Window.IsActive(radiochannels) | Window.IsActive(radiorecordings) | Window.IsActive(radioguide) | Window.IsActive(radiotimers) | Window.IsActive(radiosearch)]">special://skin/backgrounds/defaults/livetv.jpg</value>
 		<value condition="[Window.IsActive(musicfiles) | Window.IsActive(musiclibrary) | Window.IsActive(musicplaylisteditor)]">special://skin/backgrounds/defaults/music.jpg</value>
 		<value condition="Window.IsActive(pictures) + !Control.IsVisible(531)">special://skin/backgrounds/defaults/pictures.jpg</value>
 		<value condition="Window.IsActive(programs)">special://skin/backgrounds/defaults/programs.jpg</value>
@@ -559,7 +552,7 @@
 		<value condition="Window.IsActive(Weather)">[B]$INFO[Window(Weather).Property(Location)][/B] $INFO[Window(Weather).Property(Updated)]</value>
 		<value condition="Window.IsActive(filemanager) + Control.HasFocus(20)">[B]$INFO[Container(20).NumItems][/B] $LOCALIZE[31143]</value>
 		<value condition="Window.IsActive(filemanager) + Control.HasFocus(21)">[B]$INFO[Container(21).NumItems][/B] $LOCALIZE[31143]</value>
-		<value condition="Window.IsActive(pvr)">[B]$INFO[Container.NumItems][/B] $LOCALIZE[31143]</value>
+		<value condition="Window.IsActive(tvchannels) | Window.IsActive(tvrecordings) | Window.IsActive(tvguide) | Window.IsActive(tvtimers) | Window.IsActive(tvsearch) | Window.IsActive(radiochannels) | Window.IsActive(radiorecordings) | Window.IsActive(radioguide) | Window.IsActive(radiotimers) | Window.IsActive(radiosearch)">[B]$INFO[Container.NumItems][/B] $LOCALIZE[31143], $LOCALIZE[31144] $INFO[Container.SortMethod]</value>
 	</variable>
 
 	<variable name="window:Title.Video">
@@ -605,7 +598,7 @@
 
 	<variable name="window:Title.System">
 		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
-		<value condition="Window.IsActive(settings)">xbmc [COLOR=Color2]$LOCALIZE[10004][/COLOR]</value>
+		<value condition="Window.IsActive(settings)">$LOCALIZE[10004]</value>
 		<value condition="Window.IsActive(systeminfo)">$LOCALIZE[13000] [COLOR=Color2]$LOCALIZE[19033][/COLOR]</value>
 		<value condition="Window.IsActive(profiles)">$LOCALIZE[13200] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
 		<value condition="Window.IsActive(appearancesettings)">$LOCALIZE[480] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
@@ -637,13 +630,16 @@
 
 	<variable name="window:Title.PVR">
 		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
-		<value condition="SubString(Container.FolderPath,pvr://channels/tv/)">$LOCALIZE[19020] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,pvr://channels/radio/)">$LOCALIZE[19021] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,pvr://recordings/) | SubString(Container.FolderPath,pvr://timers/)">$INFO[Container.FolderName]</value>
-		<value condition="Control.IsVisible(10)">$LOCALIZE[19069] [COLOR=Color2]$LOCALIZE[19032][/COLOR]</value>
-		<value condition="Control.IsVisible(13)">$LOCALIZE[19163]</value>
-		<value condition="Control.IsVisible(15)">$LOCALIZE[19069] [COLOR=Color2]$LOCALIZE[19019][/COLOR]</value>
-		<value condition="Control.IsVisible(17)">$LOCALIZE[137]</value>
+		<value condition="Window.IsActive(tvguide)">$LOCALIZE[19020] [COLOR=Color2]$LOCALIZE[22020][/COLOR]</value>
+		<value condition="Window.IsActive(tvchannels)">$LOCALIZE[19020] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
+		<value condition="Window.IsActive(tvrecordings)">$LOCALIZE[19020] [COLOR=Color2]$LOCALIZE[19017][/COLOR]</value>
+		<value condition="Window.IsActive(tvtimers)">$LOCALIZE[19020] [COLOR=Color2]$LOCALIZE[19040][/COLOR]</value>
+		<value condition="Window.IsActive(tvsearch)">$LOCALIZE[19020] [COLOR=Color2]$LOCALIZE[137][/COLOR]</value>
+		<value condition="Window.IsActive(radioguide)">$LOCALIZE[19020] [COLOR=Color2]$LOCALIZE[22020][/COLOR]</value>
+		<value condition="Window.IsActive(radiochannels)">$LOCALIZE[19021] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
+		<value condition="Window.IsActive(radiorecordings)">$LOCALIZE[19021] [COLOR=Color2]$LOCALIZE[19017][/COLOR]</value>
+		<value condition="Window.IsActive(radiotimers)">$LOCALIZE[19021] [COLOR=Color2]$LOCALIZE[19040][/COLOR]</value>
+		<value condition="Window.IsActive(radiosearch)">$LOCALIZE[19021] [COLOR=Color2]$LOCALIZE[137][/COLOR]</value>
 	</variable>
 
 	<variable name="window:Title.Pictures">
