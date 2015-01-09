@@ -10,8 +10,11 @@
 			<onup>50</onup>
 			<ondown>50</ondown>
 			<onleft>6000</onleft>
-			<onright condition="!Window.IsActive(videoplaylist) | [Window.IsActive(videoplaylist) + !Player.HasVideo]">70</onright>
 			<onright condition="Window.IsActive(videoplaylist) + Player.HasVideo">99</onright>
+			<onright condition="Window.IsActive(videoplaylist) + !Player.HasVideo">70</onright>
+			<onright condition="Window.IsActive(tvchannels) + Player.HasVideo">99</onright>
+			<onright condition="Window.IsActive(tvchannels) + !Player.HasVideo">70</onright>
+			<onright>70</onright>
 			<pagecontrol>70</pagecontrol>
 			<preloaditems>2</preloaditems>
 			<include>toggle_Menu</include>
@@ -28,7 +31,7 @@
 			</itemlayout>
 			<focusedlayout condition="IsEmpty(Container.FolderPath)" width="620" height="40">
 				<control type="group">
-					<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+					<include>container_Focus</include>
 					<control type="image">
 						<width>650</width>
 						<height>40</height>
@@ -46,10 +49,10 @@
 					<width>595</width>
 					<label>$INFO[ListItem.Label]</label>
 					<include>container_Single</include>
-					<visible>[ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+					<include>container_Unfocus</include>
 				</control>
 			</focusedlayout>
-			<itemlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures) | Window.IsActive(programs)] + !Container.HasFolders]" width="620" height="67">
+			<itemlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures) | Window.IsActive(programs) | Window.IsActive(tvrecordings) | Window.IsActive(radiorecordings)] + !Container.HasFolders]" width="620" height="67">
 				<control type="label">
 					<left>15</left>
 					<top>6</top>
@@ -71,9 +74,58 @@
 					<include>status_List</include>
 				</control>
 			</itemlayout>
-			<focusedlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures) | Window.IsActive(programs)] + !Container.HasFolders]" width="620" height="67">
+			<itemlayout condition="Window.IsActive(tvchannels)" width="620" height="68">
 				<control type="group">
-					<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+					<left>5</left>
+					<top>5</top>
+					<control type="image">	
+						<width>54</width>
+						<height>54</height>
+						<texture>thumbs/default_Square.png</texture>
+					</control>
+					<control type="image">
+						<width>54</width>
+						<height>54</height>
+						<texture fallback="LiveTV.png">$INFO[ListItem.Art(thumb)]</texture>
+					</control>
+					<control type="progress">
+						<top>56</top>
+						<width>54</width>
+						<height>3</height>
+						<reveal>true</reveal>
+						<texturebg colordiffuse="Color3">pvr/progress.png</texturebg>
+						<lefttexture colordiffuse="Color2">-</lefttexture>
+						<midtexture colordiffuse="Selected">pvr/progress-nib.png</midtexture>
+						<righttexture colordiffuse="Color2">-</righttexture>
+						<info>ListItem.Progress</info>
+					</control>
+				</control>
+				<control type="group">
+					<left>80</left>
+					<top>6</top>
+					<control type="label">
+						<width>515</width>
+						<height>27</height>
+						<label>$VAR[media:Title]</label>
+						<include>container_Title</include>
+					</control>
+					<control type="label">
+						<top>22</top>
+						<width>515</width>
+						<label>$VAR[media:Info]</label>
+						<selectedcolor>Color2</selectedcolor>
+						<include>container_Sub</include>
+					</control>
+				</control>
+				<control type="image">
+					<include>pvr_Status</include>
+					<include>status_List</include>
+				</control>
+			</itemlayout>
+
+			<focusedlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures) | Window.IsActive(programs) | Window.IsActive(tvrecordings) | Window.IsActive(radiorecordings)] + !Container.HasFolders]" width="620" height="67">
+				<control type="group">
+					<include>container_Focus</include>
 					<control type="image">
 						<width>620</width>
 						<height>70</height>
@@ -100,7 +152,7 @@
 					</control>
 				</control>
 				<control type="group">
-					<visible>[ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+					<include>container_Unfocus</include>
 					<control type="label">
 						<left>15</left>
 						<top>6</top>
@@ -119,6 +171,109 @@
 					</control>
 					<control type="image">
 						<texture colordiffuse="Color3">$VAR[flag:Status.List]</texture>
+						<include>status_List</include>
+					</control>
+				</control>
+			</focusedlayout>
+			<focusedlayout condition="Window.IsActive(tvchannels)" width="620" height="68">
+				<control type="group">
+					<include>container_Focus</include>
+					<control type="image">
+						<width>620</width>
+						<height>69</height>
+						<texture>views/focus.png</texture>
+					</control>
+					<control type="group">
+						<left>5</left>
+						<top>5</top>
+						<control type="image">	
+							<width>54</width>
+							<height>54</height>
+							<texture>thumbs/default_Square.png</texture>
+						</control>
+						<control type="image">
+							<width>54</width>
+							<height>54</height>
+							<texture fallback="LiveTV.png">$INFO[ListItem.Art(thumb)]</texture>
+						</control>
+						<control type="progress">
+							<top>56</top>
+							<width>54</width>
+							<height>3</height>
+							<reveal>true</reveal>
+							<texturebg colordiffuse="Color3">pvr/progress.png</texturebg>
+							<lefttexture colordiffuse="Color2">-</lefttexture>
+							<midtexture colordiffuse="Selected">pvr/progress-nib.png</midtexture>
+							<righttexture colordiffuse="Color2">-</righttexture>
+							<info>ListItem.Progress</info>
+						</control>
+					</control>
+					<control type="group">
+						<left>80</left>
+						<top>6</top>
+						<control type="label">
+							<width>515</width>
+							<height>27</height>
+							<label>$VAR[media:Title]</label>
+							<include>container_Title-focus</include>
+						</control>
+						<control type="label">
+							<top>22</top>
+							<width>515</width>
+							<label>$VAR[media:Info]</label>
+							<include>container_Sub-focus</include>
+						</control>
+					</control>
+					<control type="image">
+					<include>pvr_Status-fo</include>
+					<include>status_List</include>
+				</control>
+				</control>
+				<control type="group">
+					<include>container_Unfocus</include>
+					<control type="group">
+						<left>5</left>
+						<top>5</top>
+						<control type="image">	
+							<width>54</width>
+							<height>54</height>
+							<texture>thumbs/default_Square.png</texture>
+						</control>
+						<control type="image">
+							<width>54</width>
+							<height>54</height>
+							<texture fallback="LiveTV.png">$INFO[ListItem.Art(thumb)]</texture>
+						</control>
+						<control type="progress">
+							<top>56</top>
+							<width>54</width>
+							<height>3</height>
+							<reveal>true</reveal>
+							<texturebg colordiffuse="Color3">pvr/progress.png</texturebg>
+							<lefttexture colordiffuse="Color2">-</lefttexture>
+							<midtexture colordiffuse="Selected">pvr/progress-nib.png</midtexture>
+							<righttexture colordiffuse="Color2">-</righttexture>
+							<info>ListItem.Progress</info>
+						</control>
+					</control>
+					<control type="group">
+						<left>80</left>
+						<top>6</top>
+						<control type="label">
+							<width>515</width>
+							<height>27</height>
+							<label>$VAR[media:Title]</label>
+							<include>container_Title</include>
+						</control>
+						<control type="label">
+							<top>22</top>
+							<width>515</width>
+							<label>$VAR[media:Info]</label>
+							<include>container_Sub</include>
+						</control>
+					</control>
+					<control type="image">
+						<include>pvr_Status</include>
 						<include>status_List</include>
 					</control>
 				</control>
@@ -203,7 +358,7 @@
 			<include>transition_Content</include>
 			<include>toggle_Menu</include>
 			<include>transition_Info</include>
-			<visible>Control.IsVisible(50) + [SubString(Container.FolderPath,addons://) | SubString(Container.FolderPath,plugin://plugin)] + ![StringCompare(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://all/)] + ![Container.Content(movies) | Container.Content(episodes)]</visible>
+			<visible>Control.IsVisible(50) + [SubString(Container.FolderPath,addons://) | SubString(Container.FolderPath,plugin://plugin)] + ![StringCompare(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://all/)] + ![Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)]</visible>
 			<control type="image">
 				<width>532</width>
 				<height>256</height>
@@ -239,7 +394,8 @@
 				<width>1200</width>
 				<height>144</height>
 				<include>art_Frame-fo</include>
-				<visible>Control.IsVisible(51) + ![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus | Window.IsActive(movieinformation)] + [Container.Content(episodes) | Container.Content(tvshows) | Container.Content(movies)]</visible>
+				<visible>Control.IsVisible(51) + [Container.Content(episodes) | Container.Content(tvshows) | Container.Content(movies)]</visible>
+				<include>container_Focus</include>
 			</control>
 			<!--container-->
 			<control type="fixedlist" id="51">
@@ -299,7 +455,7 @@
 						<left>260</left>
 						<top>4</top>
 						<control type="group">
-							<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+							<include>container_Focus</include>
 							<control type="label">
 								<width>920</width>
 								<label>$VAR[media:Title]</label>
@@ -329,7 +485,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>[ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+							<include>container_Unfocus</include>
 							<control type="label">
 								<width>920</width>
 								<label>$VAR[media:Title]</label>
@@ -339,6 +495,7 @@
 								<top>28</top>
 								<width>920</width>
 								<label>$VAR[media:Info]</label>
+								<selectedcolor>Color2</selectedcolor>
 								<include>container_Sub</include>
 							</control>
 							<control type="textbox" id="4">
@@ -410,7 +567,7 @@
 						<left>126</left>
 						<top>4</top>
 						<control type="group">
-							<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+							<include>container_Focus</include>
 							<control type="label">
 								<width>775</width>
 								<label>$VAR[media:Title]</label>
@@ -449,7 +606,7 @@
 							</control>
 						</control>
 						<control type="group">
-							<visible>[ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+							<include>container_Unfocus</include>
 							<control type="label">
 								<width>775</width>
 								<label>$VAR[media:Title]</label>
@@ -694,7 +851,7 @@
 				</itemlayout>
 				<focusedlayout width="1440" height="44">
 					<control type="group">
-						<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+						<include>container_Focus</include>
 						<include>view_Playlist-Commons</include>
 						<control type="image">
 							<width>1200</width>
@@ -740,7 +897,7 @@
 						</control>
 					</control>
 					<control type="group">
-						<visible>[ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+						<include>container_Unfocus</include>
 						<include>view_Playlist-Commons</include>
 						<control type="group">
 							<left>15</left>

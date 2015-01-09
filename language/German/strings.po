@@ -6,15 +6,15 @@
 # Translators:
 # Translators:
 # Translators:
-# for1real <kabeljow@gmail.com>, 2014
+# for1real <kabeljow@gmail.com>, 2014-2015
 # Alcatr4zz <sta.ma@web.de>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC skin reFocus\n"
 "Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2014-07-17 20:07+0000\n"
-"Last-Translator: Alcatr4zz <sta.ma@web.de>\n"
+"PO-Revision-Date: 2015-01-06 14:59+0000\n"
+"Last-Translator: for1real <kabeljow@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/skin-refocus/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -164,8 +164,12 @@ msgid "Sorting"
 msgstr "Sortierung"
 
 msgctxt "#31141"
-msgid "Order by"
-msgstr "Ordne nach"
+msgid "Order"
+msgstr "Sortieren"
+
+msgctxt "#31142"
+msgid "By"
+msgstr "Von"
 
 msgctxt "#31143"
 msgid "Items"
@@ -173,7 +177,7 @@ msgstr "Elemente"
 
 msgctxt "#31144"
 msgid "By"
-msgstr "nach"
+msgstr "Nach"
 
 msgctxt "#31145"
 msgid "Genre unknown"
@@ -550,6 +554,10 @@ msgctxt "#31405"
 msgid "Apply"
 msgstr "Anwenden"
 
+msgctxt "#31406"
+msgid "Actions"
+msgstr "Aktionen"
+
 #: MEDIA INFO
 msgctxt "#31500"
 msgid "Age"
@@ -568,8 +576,8 @@ msgid "Status"
 msgstr "Status"
 
 msgctxt "#31504"
-msgid "Show (scheduled) recording in PVR and Home screen"
-msgstr "Zeige (geplante) Aufnahmen in PVR und Hauptmenü"
+msgid "Show (scheduled) recording on Home screen"
+msgstr "Zeige (geplante) Aufnahmen im Home Menü"
 
 msgctxt "#31520"
 msgid "Change artwork"
@@ -653,6 +661,18 @@ msgctxt "#31717"
 msgid "Finishing up"
 msgstr "Fast fertig"
 
+msgctxt "#31718"
+msgid "Good morning"
+msgstr "Guten Morgen"
+
+msgctxt "#31719"
+msgid "Good afternoon"
+msgstr "Guten Tag"
+
+msgctxt "#31720"
+msgid "Good evening"
+msgstr "Guten Abend"
+
 #: CREDITS / ABOUT
 msgctxt "#31800"
 msgid "Skin design + development"
@@ -675,11 +695,11 @@ msgid "Final note"
 msgstr "Letzter Kommentar"
 
 msgctxt "#31805"
-msgid "Team-XBMC, the XBMC Community, and YOU for using reFocus!"
-msgstr "Team-XBMC, die XBMC Gemeinschaft und dich, weil du reFocus nutzt!"
+msgid "Team-Kodi, the Kodi Community, and YOU for using reFocus!"
+msgstr "Team-Kodi, der Kodi-Community und Dir, weil du reFocus nutzt!"
 
 msgctxt "#31806"
 msgid ""
-"Please consider supporting the development of xbmc - "
-"[B]xbmc.org/contribute/[/B]"
-msgstr "Bitte überlege, die Entwicklung von XBMC zu unterstützen - [B]xbmc.org/contribute/[/B]"
+"Please consider supporting the development of Kodi - "
+"[B]kodi.tv/contribute/[/B]"
+msgstr "Bitte überlege, die Entwicklung von Kodi zu unterstützen - [B]kodi.tv/contribute/[/B]"
