@@ -1,0 +1,63 @@
+v0.3.2 (Unstable development revision)
+- UPnP and video sources explorer in management dialog
+- New PVR and Library Sources groupings in management dialog
+- Improved labelID generation (submenu's will stick better to main menu's)
+- Add option to tell management dialog not to fill label's on management dialog controls, additional label 500 for window title
+- Management dialog now uses select dialog with label2 and thumbnails visible
+- Ability to set visibility condition for skin-provided shortcuts
+- Ability to override shortcut actions based on XBMC version
+- Ability to customize the groups available shortcuts appear in in the management dialog
+- Control over placement of skin-provided shortcuts in the management dialog
+- Re-order shortcut groups in management dialog
+- Fix for crash when no profiles.xml file
+- Fix for single-list xml method to return to main menu item when hiding submenu
+- Fix for action sometimes not showing in label2 in management dialog
+
+v0.3.1
+- Fixes: No favourites showing in management dialog
+         Script crash on choosing empty group in skin-managed selection dialog
+		 Remove visibility condition for Eject Tray shortcut
+
+v0.3.0
+- Fix escaping of main menu items (includes method)
+- Fix for custom nodes when using profiles
+- Fix for includes method when using multiple profiles
+- Load skin-provided playlists and playlists from sub-folders
+- Ability to browse a plugin from the management dialog
+- Ability to provide recommended shortcuts in management dialog
+- Ability to choose to play or display a playlist
+- Improved method of managing additional properties
+- Method to list menu and submenus in a single include
+- Ability to allow a user to select a shortcut, then pass this to the skin to manage
+- Library/playlists/addon/favourites loading code moved to separate module, loaded threaded
+- Menu now be rebuilt on skin or script version and profile changes (includes method)
+- Updated language files from Transifex
+
+v0.2.4
+- Fix listing individual groups with <include> method
+- Parse favourites.xml directly
+- Add XBMC Commands shortcut group
+- Updated language files from Transifex
+
+v0.2.2
+- New optional method of listing shortcuts via includes file
+- Option to allow user to browse for image or use playlist as background
+- Option to allow user to choose playlist as widget
+- Overrides and defaults now limitable by groupname
+- Fix for custom video nodes
+- Bug fixes and stability improvements
+- Updated language files from Transifex
+
+v0.2.0
+- Removed check for settings shortcut (skins are now recommended to always provide alternative settings access)
+- Video library shortcuts are loaded from video library node files (test)
+- Video and music playlists are now grouped together
+- Live TV renamed to PVR
+- Support for managing widgets, backgrounds, custom properties
+- Shortcuts with overriden images and override files are kept in memory to speed up listings
+- Submenu shortcuts are now all loaded at once, with visibility conditions for switching lists
+- Improved utf-8 support
+- Bug fixes
+
+v0.1.0
+- Initial release

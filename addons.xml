@@ -1,15 +1,113 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-	<addon id="repository.horizondigital" name="Horizon Digital Repository" version="1.0" provider-name="Horizon Digital">
-		<extension point="xbmc.addon.repository" name="Horizon Digital Repository">
-			<info compressed="false">http://github.com/horizondigital/repository.horizondigital/raw/master/addons.xml</info>
-			<datadir zip="true">http://github.com/horizondigital/repository.horizondigital/raw/master/zips</datadir>
+	<addon id="script.skinshortcuts" name="Skin Shortcuts" version="0.4.4" provider-name="Unfledged">
+		<requires>
+			<import addon="xbmc.python" version="2.14.0"/>
+			<import addon="script.module.simplejson" version="3.3.0"/>
+			<import addon="script.module.unidecode" version="0.4.14"/>
+		</requires>
+		<extension point="xbmc.python.library" library="default.py"/>
+		<extension point="xbmc.addon.metadata">
+			<description>Add-on for skins to provide simple managing and listing of user shortcuts (requires skin support)</description>
+			<language/>
+			<platform>all</platform>
+			<license>GNU General Public License, v2</license>
+			<forum>http://forum.xbmc.org/showthread.php?tid=178294</forum>
+			<website/>
+			<email/>
+			<source>https://github.com/unfledged</source>
 		</extension>
-	    <extension point="xbmc.addon.metadata">
-	        <summary>Horizon Digital Addon Repository</summary>
-	        <description>Download and install Horizon Digital's repository.</description>
-	        <disclaimer></disclaimer>
-	        <platform>all</platform>
-	    </extension>
+	</addon>
+	<addon id="script.watchlist" name="Watchlist" provider-name="BigNoid,Unfledged" version="0.0.2">
+		<requires>
+			<import addon="xbmc.addon" version="12.0.0"/>
+			<import addon="xbmc.json" version="6.0.0"/>
+			<import addon="xbmc.python" version="2.1.0"/>
+			<import addon="script.module.simplejson" version="2.0.10"/>
+		</requires>
+		<extension point="xbmc.python.pluginsource" library="default.py"/>
+		<extension point="xbmc.addon.metadata">
+			<description lang="en">Script to provide Watchlist feature for reFocus 1.1.0</description>
+			<platform>all</platform>
+			<language/>
+		</extension>
+	</addon>
+	<addon id="skin.refocus" version="2.0.4-PR" name="reFocus" provider-name="Jeroen">
+		<requires>
+			<import addon="xbmc.gui" version="5.3.0"/>
+			<import addon="script.artistslideshow" version="1.8.2"/>
+			<import addon="script.artwork.downloader" version="12.0.29"/>
+			<import addon="script.globalsearch" version="3.0.4"/>
+			<import addon="script.grab.fanart" version="0.13.0"/>
+			<import addon="script.skinshortcuts" version="0.4.4"/>
+			<import addon="script.tv.show.next.aired" version="6.0.12"/>
+			<import addon="script.watchlist" version="0.0.2"/>
+			<import addon="service.library.data.provider" version="0.0.7"/>
+		</requires>
+		<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false">
+			<res width="1280" height="720" aspect="16:9" default="true" folder="720p"/>
+		</extension>
+		<extension point="xbmc.addon.metadata">
+			<platform>all</platform>
+			<summary>reFocus by Jeroen</summary>
+			<summary lang="nl">reFocus door Jeroen</summary>
+			<summary lang="es">reFocus, hecho por Jeroen</summary>
+			<summary lang="pl">reFocus autorstwa Jeroena</summary>
+			<summary lang="de">reFocus, von Jeroen</summary>
+			<description>reFocus is a graphical interface for XBMC that understands your media is what truly matters. Elegance, simplicity, refinement, consistency and balanced design are keywords for this skin.</description>
+			<disclaimer>Mouse and touchscreen use not supported</disclaimer>
+			<license>Attribution-NonCommercial-ShareAlike 3.0 Unported</license>
+			<forum>http://forum.xbmc.org/forumdisplay.php?fid=72</forum>
+			<source>https://github.com/jeroenpardon/skin.refocus/</source>
+			<website>jeroenpardon.github.io/skin.refocus/</website>
+		</extension>
+	</addon>
+	<addon id="plugin.video.genesis" name="Genesis" version="3.4.0" provider-name="lambda">
+		<requires>
+			<import addon="xbmc.python" version="2.1.0"/>
+			<import addon="script.module.urlresolver" version="1.0.0"/>
+			<import addon="script.module.metahandler" optional="true"/>
+			<import addon="script.module.simplejson" optional="true"/>
+			<import addon="script.module.parsedom" optional="true"/>
+			<import addon="plugin.video.youtube" optional="true"/>
+		</requires>
+		<extension point="xbmc.python.pluginsource" library="default.py">
+			<provides>video</provides>
+		</extension>
+		<extension point="xbmc.service" library="service.py" start="startup">
+		</extension>
+		<extension point="xbmc.addon.metadata">
+			<summary lang="en">The origins of streaming</summary>
+			<description lang="en">Visit TVADDONS.ag for support</description>
+			<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
+			<forum>http://forums.tvaddons.ag/forums/148-lambda-s-xbmc-addons</forum>
+			<source>https://offshoregit.com/lambda81/</source>
+			<website>https://offshoregit.com/lambda81/</website>
+			<platform>all</platform>
+		</extension>
+	</addon>
+	<addon id="repository.horizondigital.stable" name="Horizon Digital Stable" version="1.0" provider-name="Horizon Digital">
+		<extension point="xbmc.addon.repository" name="Horizon Digital Stable">
+			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml</info>
+			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/zips</datadir>
+		</extension>
+		<extension point="xbmc.addon.metadata">
+			<summary>Horizon Digital Stable Repository</summary>
+			<description>Horizon Digital's Stable Addons</description>
+			<disclaimer>These addons are tested for stability.</disclaimer>
+			<platform>all</platform>
+		</extension>
+	</addon>
+	<addon id="repository.horizondigital.testing" name="Horizon Digital TESTING" version="1.0" provider-name="Horizon Digital">
+		<extension point="xbmc.addon.repository" name="Horizon Digital TESTING">
+			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/addons.xml</info>
+			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/zips</datadir>
+		</extension>
+		<extension point="xbmc.addon.metadata">
+			<summary>Horizon Digital TESTING Repository</summary>
+			<description>Horizon Digital's TESTING Addons</description>
+			<disclaimer>THESE ADDONS ARE FOR TESTING PURPOSES ONLY!</disclaimer>
+			<platform>all</platform>
+		</extension>
 	</addon>
 </addons>

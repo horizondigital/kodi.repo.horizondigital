@@ -1,2 +1,2 @@
-Horizon Media Box
-=================
+Horizon Digital Repository
+==========================
