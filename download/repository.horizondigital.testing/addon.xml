@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.horizondigital.testing" name="Horizon Digital TESTING" version="1.0" provider-name="Horizon Digital">
 	<extension point="xbmc.addon.repository" name="Horizon Digital TESTING">
-		<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/addons.xml</info>
-		<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/download</datadir>
+		<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital.testing/raw/master/addons.xml</info>
+		<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital.testing/raw/master/download</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Horizon Digital TESTING Repository</summary>
