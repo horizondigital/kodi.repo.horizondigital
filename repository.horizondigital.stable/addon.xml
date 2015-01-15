@@ -3,6 +3,7 @@
 	<extension point="xbmc.addon.repository" name="Horizon Digital Stable">
 		<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml</info>
 		<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/</datadir>
+		<checksum>http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml.md5</checksum>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Horizon Digital Stable Repository</summary>

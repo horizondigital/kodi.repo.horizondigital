@@ -91,23 +91,12 @@
 		<extension point="xbmc.addon.repository" name="Horizon Digital Stable">
 			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml</info>
 			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/download</datadir>
+			<checksum>http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml.md5</checksum>
 		</extension>
 		<extension point="xbmc.addon.metadata">
 			<summary>Horizon Digital Stable Repository</summary>
 			<description>Horizon Digital's Stable Addons</description>
 			<disclaimer>These addons are tested for stability.</disclaimer>
-			<platform>all</platform>
-		</extension>
-	</addon>
-	<addon id="repository.horizondigital.testing" name="Horizon Digital TESTING" version="1.0" provider-name="Horizon Digital">
-		<extension point="xbmc.addon.repository" name="Horizon Digital TESTING">
-			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital.testing/raw/master/addons.xml</info>
-			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital.testing/raw/master/download</datadir>
-		</extension>
-		<extension point="xbmc.addon.metadata">
-			<summary>Horizon Digital TESTING Repository</summary>
-			<description>Horizon Digital's TESTING Addons</description>
-			<disclaimer>THESE ADDONS ARE FOR TESTING PURPOSES ONLY!</disclaimer>
 			<platform>all</platform>
 		</extension>
 	</addon>
