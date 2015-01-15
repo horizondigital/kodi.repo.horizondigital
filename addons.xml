@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- TESTING REPO -->
 <addons>
 	<addon id="script.skinshortcuts" name="Skin Shortcuts" version="0.4.4" provider-name="Unfledged">
 		<requires>
@@ -89,7 +90,7 @@
 	<addon id="repository.horizondigital.stable" name="Horizon Digital Stable" version="1.0" provider-name="Horizon Digital">
 		<extension point="xbmc.addon.repository" name="Horizon Digital Stable">
 			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml</info>
-			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/zips</datadir>
+			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/download</datadir>
 		</extension>
 		<extension point="xbmc.addon.metadata">
 			<summary>Horizon Digital Stable Repository</summary>
@@ -101,7 +102,7 @@
 	<addon id="repository.horizondigital.testing" name="Horizon Digital TESTING" version="1.0" provider-name="Horizon Digital">
 		<extension point="xbmc.addon.repository" name="Horizon Digital TESTING">
 			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/addons.xml</info>
-			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/zips</datadir>
+			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/testing/download</datadir>
 		</extension>
 		<extension point="xbmc.addon.metadata">
 			<summary>Horizon Digital TESTING Repository</summary>
