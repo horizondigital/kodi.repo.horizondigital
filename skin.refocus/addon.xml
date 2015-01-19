@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<addon id="skin.refocus" version="99.2.0.4-PR" name="reFocus" provider-name="Jeroen">
+	<addon id="skin.refocus" version="2.0.6-PR" name="reFocus" provider-name="Jeroen">
 	<requires>
 		<import addon="xbmc.gui" version="5.3.0"/>
 		<import addon="script.artistslideshow" version="1.8.2"/>
@@ -17,6 +17,10 @@
 	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
 		<summary>reFocus by Jeroen</summary>
+		<summary lang="nl">reFocus door Jeroen</summary>
+		<summary lang="es">reFocus, hecho por Jeroen</summary>
+		<summary lang="pl">reFocus autorstwa Jeroena</summary>
+		<summary lang="de">reFocus, von Jeroen</summary>
 		<description>reFocus is a graphical interface for XBMC that understands your media is what truly matters. Elegance, simplicity, refinement, consistency and balanced design are keywords for this skin.</description>
 		<disclaimer>Mouse and touchscreen use not supported</disclaimer>
 		<license>Attribution-NonCommercial-ShareAlike 3.0 Unported</license>
