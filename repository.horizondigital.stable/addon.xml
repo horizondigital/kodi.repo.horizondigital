@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.horizondigital.stable" name="Horizon Digital Stable" version="1.0" provider-name="Horizon Digital">
+<addon id="repository.horizondigital.stable" name="Horizon Digital Stable" version="1.0.1" provider-name="Horizon Digital">
 	<extension point="xbmc.addon.repository" name="Horizon Digital Stable">
-		<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml</info>
-		<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/</datadir>
-		<checksum>http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml.md5</checksum>
+		<dir>
+			<info compressed="false">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml</info>
+			<datadir zip="true">http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/</datadir>
+			<checksum>http://github.com/horizondigital/kodi.repo.horizondigital/raw/master/addons.xml.md5</checksum>
+		</dir>
+		<info compressed="false">http://repo.horizondigital.net/addons.xml</info>
+		<datadir zip="true">http://repo.horizondigital.net/</datadir>
+		<checksum>http://repo.horizondigital.net/addons.xml.md5</checksum>
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Horizon Digital Stable Repository</summary>
