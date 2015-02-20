@@ -32,7 +32,7 @@
 			<language/>
 		</extension>
 	</addon>
-	<addon id="skin.refocus" version="2.0.8-PR2" name="reFocus" provider-name="Jeroen">
+	<addon id="skin.refocus" version="2.0.8-RC2" name="reFocus" provider-name="Jeroen">
 	<requires>
 		<import addon="xbmc.gui" version="5.3.0"/>
 		<import addon="script.artistslideshow" version="1.8.2"/>
@@ -49,20 +49,16 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
-		<summary>reFocus by Jeroen</summary>
-		<summary lang="nl">reFocus door Jeroen</summary>
-		<summary lang="es">reFocus, hecho por Jeroen</summary>
-		<summary lang="pl">reFocus autorstwa Jeroena</summary>
-		<summary lang="de">reFocus, von Jeroen</summary>
-		<description>reFocus is a graphical interface for XBMC that understands your media is what truly matters. Elegance, simplicity, refinement, consistency and balanced design are keywords for this skin.</description>
-		<disclaimer>Mouse and touchscreen use not supported</disclaimer>
+		<summary lang="en">reFocus by Jeroen</summary>
+		<description lang="en">reFocus is a graphical interface for XBMC that understands your media is what truly matters. Elegance, simplicity, refinement, consistency and balanced design are keywords for this skin.</description>
+
 		<license>Attribution-NonCommercial-ShareAlike 3.0 Unported</license>
 		<forum>http://forum.xbmc.org/forumdisplay.php?fid=72</forum>
 		<source>https://github.com/jeroenpardon/skin.refocus/</source>
 		<website>jeroenpardon.github.io/skin.refocus/</website>
 	</extension>
 </addon>
-<addon id="plugin.video.genesis" name="Genesis" version="3.5.2" provider-name="lambda">
+<addon id="plugin.video.genesis" name="Genesis" version="3.6.1" provider-name="lambda">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 		<import addon="script.module.metahandler" optional="true"/>
@@ -126,7 +122,7 @@
 </addon>
 
 
-<addon id="plugin.program.horizonsettings" version="1.0" name="Horizon Settings Tool" provider-name="horizondigital">
+<addon id="plugin.program.horizonsettings" version="1.0.1" name="Horizon Settings Tool" provider-name="horizondigital">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
 	</requires>
