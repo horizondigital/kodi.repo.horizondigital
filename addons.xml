@@ -32,13 +32,17 @@
 			<language/>
 		</extension>
 	</addon>
-	<addon id="skin.refocus" version="2.0.8-RC2" name="reFocus" provider-name="Jeroen">
+
+
+
+
+<addon id="skin.refocus" version="2.0.10" name="reFocus" provider-name="Jeroen">
 	<requires>
 		<import addon="xbmc.gui" version="5.3.0"/>
 		<import addon="script.artistslideshow" version="1.8.2"/>
 		<import addon="script.artwork.downloader" version="12.0.29"/>
 		<import addon="script.globalsearch" version="3.0.4"/>
-		<import addon="script.grab.fanart" version="0.13.0"/>
+		<import addon="script.grab.fanart" version="0.13.2"/>
 		<import addon="script.skinshortcuts" version="0.4.4"/>
 		<import addon="script.tv.show.next.aired" version="6.0.12"/>
 		<import addon="script.watchlist" version="0.0.2"/>
@@ -50,14 +54,20 @@
 	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
 		<summary lang="en">reFocus by Jeroen</summary>
-		<description lang="en">reFocus is a graphical interface for XBMC that understands your media is what truly matters. Elegance, simplicity, refinement, consistency and balanced design are keywords for this skin.</description>
-
+		<description lang="en">reFocus is a graphical interface for Kodi that understands your media is what truly matters. Elegance, simplicity, refinement, consistency and balanced design are keywords for this skin.</description>
+		<disclaimer lang="en">Mouse and touchscreen use not supported</disclaimer>
 		<license>Attribution-NonCommercial-ShareAlike 3.0 Unported</license>
 		<forum>http://forum.xbmc.org/forumdisplay.php?fid=72</forum>
 		<source>https://github.com/jeroenpardon/skin.refocus/</source>
 		<website>jeroenpardon.github.io/skin.refocus/</website>
 	</extension>
 </addon>
+
+
+
+
+
+
 
 <addon id="plugin.video.genesis" name="Genesis" version="4.1.0" provider-name="lambda">
 	<requires>
